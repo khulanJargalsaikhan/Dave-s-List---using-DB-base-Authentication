@@ -14,19 +14,19 @@
 
 
 
-<div     th:if="${allLists.size()} > 0"  class="container-sm">
+<div     th:if="${allLists.size()} > 0"  class="container-sm col-lg-3">
 
     <ul th:each="list: ${allLists}" class="list-group">
         <a th:href="@{/list/{id}(id=${list.id})}">
             <li th:text="${list.address}" class="list-group-item active" aria-current="true"></li>
         </a>
-        <li th:text="${list.city}" class="list-group-item"></li>
-        <li th:text="${list.state}" class="list-group-item"></li>
-        <li th:text="${list.price}" class="list-group-item"></li>
-        <li th:text="${list.id}" class="list-group-item"></li>
+        City: <li th:text="${list.city}" class="list-group-item"></li>
+        State: <li th:text="${list.state}" class="list-group-item"></li>
+        Price: <li th:text="${list.price}" class="list-group-item"></li>
+        Id: <li th:text="${list.id}" class="list-group-item"></li>
 
         <!--update - detail button-->
-        <div class="container-sm" style="margin-top: 10px">
+        <div class="container-sm col-lg-3" style="margin-top: 10px">
             <button type="button" class="btn btn-success"><a style="color: white" th:href="@{/update/{id}(id=${list.id})}">Update</a></button>
             <button type="button" class="btn btn-danger"><a style="color: white" th:href="@{/detail/{id}(id=${list.id})}">Detail</a></button>
         </div>
@@ -35,7 +35,7 @@
 </div>
 <div     th:unless="${allLists.size()} > 0" class="container-sm">
 
-    <p style="text-align: center">No posts!</p>
+    <p style="text-align: center">No Lists!</p>
 </div>
 
 

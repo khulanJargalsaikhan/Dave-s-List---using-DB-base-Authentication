@@ -14,15 +14,15 @@
 
 
 
-<div  class="container-sm col-sm-3">
+<div  class="container-sm col-lg-3">
     <ul class="list-group">
         <li class="list-group-item">ID#: [[${list.id}]]</li>
-        <li th:text="${list.description}" class="list-group-item active" aria-current="true"></li>
-        <li th:text="${list.rules}" class="list-group-item"></li>
-        <li th:text="${list.wifi}" class="list-group-item"></li>
-        <li th:text="${list.cable}" class="list-group-item"></li>
-        <li th:text="${list.privateBathroom}" class="list-group-item"></li>
-        <li th:text="${list.rented}" class="list-group-item"></li>
+        Description: <li th:text="${list.description}" class="list-group-item active" aria-current="true"></li>
+        Rules: <li th:text="${list.rules}" class="list-group-item"></li>
+        Wifi: <li th:text="${list.wifi}" class="list-group-item"></li>
+        Cable: <li th:text="${list.cable}" class="list-group-item"></li>
+        Private Bathroom: <li th:text="${list.privateBathroom}" class="list-group-item"></li>
+        Is Rented: <li th:text="${list.rented}" class="list-group-item"></li>
     </ul>
 </div>
 

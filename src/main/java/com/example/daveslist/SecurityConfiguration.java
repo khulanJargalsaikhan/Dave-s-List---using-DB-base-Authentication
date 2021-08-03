@@ -15,13 +15,16 @@ import javax.sql.DataSource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.authorizeRequests()
+        httpSecurity.authorizeRequests().antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/addlist").hasRole("ADMIN")
-                .antMatchers("/update").hasRole("ADMIN")
+                .antMatchers("/update/**").hasRole("ADMIN")
                 .antMatchers("/**").hasAnyRole("ADMIN", "USER")
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll();
+                .loginPage("/login").permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login?logout=true").permitAll();
 
         // accessing H2 for debugging purpose
         httpSecurity.csrf().ignoringAntMatchers("/h2-console/**");
@@ -39,10 +42,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .withDefaultSchema()
-                .withUser("DaveWolf").password(passwordEncoder().encode("admin")).roles("ADMIN")
-                .and()
-                .withUser("user").password(passwordEncoder().encode("user")).roles("USER");
+                .usersByUsernameQuery("select username, password, enabled from " +
+                        "user_table where username=?")
+                .authoritiesByUsernameQuery("select username, role from role_table " +
+                        "where username=?");
+
     }
 
 

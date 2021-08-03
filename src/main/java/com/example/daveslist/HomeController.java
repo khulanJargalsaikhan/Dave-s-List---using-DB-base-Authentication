@@ -89,6 +89,12 @@ public class HomeController {
         return "detail";
     }
 
+    @RequestMapping("/logout")
+    public String logout(){
+        return "redirect:/login?logout=true";
+    }
+
+
     public void idSetter(List list){
         idCounter += 1;
         list.setId(idCounter);
