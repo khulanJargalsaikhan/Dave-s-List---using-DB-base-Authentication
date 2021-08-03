@@ -17,7 +17,7 @@ public class List {
     private String state;
 
     @NotNull
-    private double price;
+    private int price;
 
     @NotEmpty
     @NotNull
@@ -70,11 +70,11 @@ public class List {
         this.state = state;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

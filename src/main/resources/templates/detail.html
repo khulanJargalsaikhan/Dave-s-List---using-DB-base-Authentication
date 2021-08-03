@@ -17,7 +17,11 @@
 <div  class="container-sm col-lg-3">
     <ul class="list-group">
         <li class="list-group-item">ID#: [[${list.id}]]</li>
-        Description: <li th:text="${list.description}" class="list-group-item active" aria-current="true"></li>
+        Address: <li th:text="${list.address}" class="list-group-item"></li>
+        City: <li th:text="${list.city}" class="list-group-item"></li>
+        State: <li th:text="${list.state}" class="list-group-item"></li>
+        Price: <li th:text="${list.price}" class="list-group-item"></li>
+        Description: <li th:text="${list.description}" class="list-group-item"></li>
         Rules: <li th:text="${list.rules}" class="list-group-item"></li>
         Wifi: <li th:text="${list.wifi}" class="list-group-item"></li>
         Cable: <li th:text="${list.cable}" class="list-group-item"></li>
